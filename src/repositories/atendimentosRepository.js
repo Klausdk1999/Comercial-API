@@ -1,4 +1,4 @@
-import connection from "../dbStrategy/postgres.js";
+import connection from "../database/postgre.js";
 
 async function getAll() {
     

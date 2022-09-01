@@ -12,12 +12,16 @@ create table modelos (
 	boca INTEGER
 );
 
+-- atualizar !!!!!!!!!!!!!!!!
 create table produtos (
 	id serial PRIMARY KEY,
+	serial varchar(255) NOT NULL UNIQUE,
 	marca varchar(255) NOT NULL REFERENCES marcas(nome),
 	modelo varchar(255) NOT NULL REFERENCES modelos(nome),
+	dono integer NOT NULL REFERENCES clientes(id),
 	data_registro TIMESTAMP DEFAULT NOW() NOT NULL,
-	rotulos INTEGER
+	rotulos INTEGER,
+	descricao TEXT
 );
 
 create table status (
