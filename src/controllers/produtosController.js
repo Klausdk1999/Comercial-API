@@ -1,5 +1,18 @@
 import {produtosRepository} from '../repositories/produtosRepository.js'
 
+export async function getProdutos(req, res) {
+
+  try {
+    const produtos = await produtosRepository.getProdutos();
+    return res.status(200).send(produtos.rows);
+  } catch (error) {
+    if (error.code==="23505"){
+      return res.sendStatus(409);
+    }
+    return res.status(500).send(error);
+  }
+} 
+
 export async function createMarca(req, res){
     const {nome} = req.body;
     try{

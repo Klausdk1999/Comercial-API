@@ -36,7 +36,7 @@ async function insertStatus(queryString) {
 }
 
 export const atendimentosRepository = {
-	getAll,
+	getAtendimentos,
     insertPeca,
     insertAtendimento,
     insertProcesso,

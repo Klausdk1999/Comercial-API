@@ -1,6 +1,6 @@
 import connection from "../database/postgre.js";
 
-async function getAll() {
+async function getClientes() {
     
 	return connection.query(
         `SELECT * FROM clientes;`
@@ -58,7 +58,7 @@ async function insertTipo(queryString) {
 }
 
 export const clientesRepository = {
-	getAll,
+	getClientes,
     insertPais,
     insertEstado,
     insertCidade,

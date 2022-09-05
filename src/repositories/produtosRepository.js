@@ -29,7 +29,7 @@ async function insertMarca(queryString) {
 }
 
 export const produtosRepository = {
-    getAll,
+    getProdutos,
 	insertMarca,
     insertModelo,
     insertProduto

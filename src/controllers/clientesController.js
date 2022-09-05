@@ -3,8 +3,8 @@ import { clientesRepository } from "../repositories/clientesRepository.js";
 export async function getClientes(req, res) {
 
     try {
-      const atendimentos = await atendimentosRepository.getAll();
-      return res.status(200).send(atendimentos.rows);
+      const clientes = await clientesRepository.getClientes();
+      return res.status(200).send(clientes.rows);
     } catch (error) {
       if (error.code==="23505"){
         return res.sendStatus(409);
