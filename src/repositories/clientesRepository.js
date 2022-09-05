@@ -3,7 +3,7 @@ import connection from "../database/postgre.js";
 async function getAll() {
     
 	return connection.query(
-        `SELECT * FROM atendimentos;`
+        `SELECT * FROM clientes;`
     );
 }
 
@@ -54,6 +54,7 @@ async function insertTipo(queryString) {
 	return connection.query(
         `INSERT INTO tipos_clientes ( nome ) VALUES ($1) ;`,queryString
     );
+    //contrato ou avulso
 }
 
 export const clientesRepository = {

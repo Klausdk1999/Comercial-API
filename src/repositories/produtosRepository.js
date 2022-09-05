@@ -1,5 +1,12 @@
 import connection from "../database/postgre.js";
 
+async function getAll() {
+    
+	return connection.query(
+        `SELECT * FROM produtos;`
+    );
+}
+
 async function insertModelo(queryString) {
     
 	return connection.query(
@@ -22,6 +29,7 @@ async function insertMarca(queryString) {
 }
 
 export const produtosRepository = {
+    getAll,
 	insertMarca,
     insertModelo,
     insertProduto

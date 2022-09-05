@@ -1,6 +1,6 @@
-import { atendimentosRepository } from "../repositories/atendimentosRepository.js";
+import { clientesRepository } from "../repositories/clientesRepository.js";
 
-export async function getAtendimentos(req, res) {
+export async function getClientes(req, res) {
 
     try {
       const atendimentos = await atendimentosRepository.getAll();
@@ -13,10 +13,10 @@ export async function getAtendimentos(req, res) {
     }
 } 
 
-export async function createPeca(req, res){
-  const {nome,valor,estoque} = req.body;
+export async function createPais(req, res){
+  const {nome} = req.body;
   try{
-    atendimentosRepository.insertPeca([nome,valor,estoque]);
+    clientesRepository.insertPais([nome]);
     return res.sendStatus(201);
 
   }catch(e){
@@ -24,10 +24,10 @@ export async function createPeca(req, res){
   }
 }
 
-export async function createProcesso(req, res){
-  const {nome,valor} = req.body;
+export async function createEstado(req, res){
+  const {nome,pais} = req.body;
   try{
-    atendimentosRepository.insertProcesso([nome,valor]);
+    clientesRepository.insertEstado([nome,pais]);
     return res.sendStatus(201);
 
   }catch(e){
@@ -35,10 +35,54 @@ export async function createProcesso(req, res){
   }
 }
 
-export async function createAtendimento(req, res){
-  const {status,produto,cliente,responsavel,troca_de_peca,descricao} = req.body;
+export async function createCidade(req, res){
+  const {nome,estado} = req.body;
   try{
-    atendimentosRepository.insertAtendimento([status,produto,cliente,responsavel,troca_de_peca,descricao]);
+    clientesRepository.insertCidade([nome,estado]);
+    return res.sendStatus(201);
+
+  }catch(e){
+    return res.sendStatus(500);
+  }
+}
+
+export async function createBairro(req, res){
+  const {nome,cidade} = req.body;
+  try{
+    clientesRepository.insertBairro([nome,cidade]);
+    return res.sendStatus(201);
+
+  }catch(e){
+    return res.sendStatus(500);
+  }
+}
+
+export async function createEndereco(req, res){
+  const {bairro,cep,rua,numero,complemento} = req.body;
+  try{
+    clientesRepository.insertEndereco([bairro,cep,rua,numero,complemento]);
+    return res.sendStatus(201);
+
+  }catch(e){
+    return res.sendStatus(500);
+  }
+}
+
+export async function createCliente(req, res){
+  const {tipo,endereco,nome,telefone,email,cnpj_cpf} = req.body;
+  try{
+    clientesRepository.insertCliente([tipo,endereco,nome,telefone,email,cnpj_cpf]);
+    return res.sendStatus(201);
+
+  }catch(e){
+    return res.sendStatus(500);
+  }
+}
+
+export async function createTipo(req, res){
+  const {nome} = req.body;
+  try{
+    clientesRepository.insertTipo([nome]);
     return res.sendStatus(201);
 
   }catch(e){
