@@ -1,6 +1,6 @@
 import connection from "../database/postgre.js";
 
-async function getAll() {
+async function getAtendimentos() {
     
 	return connection.query(
         `SELECT * FROM atendimentos;`
